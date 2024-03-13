@@ -32,7 +32,7 @@ function TopBar({open, toggleDrawer}) {
 
     return (
         <>
-            <AppBar position="absolute" open={open}>
+            <AppBar position="absolute" open={open} >
                 <Toolbar
                     sx={{
                         pr: '24px', // keep right padding when drawer closed
@@ -57,7 +57,7 @@ function TopBar({open, toggleDrawer}) {
                         noWrap
                         sx={{ flexGrow: 1 }}
                     >
-                        Dashboard
+                    
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
