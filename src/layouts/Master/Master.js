@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import {styled, createTheme, ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -10,18 +10,18 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems, secondaryListItems } from '../Shares/Menu/Menu';
+import {mainListItems} from '../Shares/Menu/Menu';
 import Copyright from '../Shares/Copyright/Copyright';
 import TopBar from '../Shares/TopBar/TopBar';
-import AdbIcon from '@mui/icons-material/Adb';
+import {Logo} from "../Shares/Logo/Logo";
+import {Singer} from "../../components/Singer/Singer";
 
 const drawerWidth = 240;
 
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
+const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
+    ({theme, open}) => ({
         '& .MuiDrawer-paper': {
             position: 'relative',
             whiteSpace: 'nowrap',
@@ -66,33 +66,30 @@ export default function Master() {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
+            <Box sx={{display: 'flex'}}>
+                <CssBaseline/>
 
-                <TopBar open={open} toggleDrawer={toggleDrawer} />
+                <TopBar open={open} toggleDrawer={toggleDrawer}/>
 
                 <Drawer variant="permanent" open={open}>
                     <Toolbar
                         sx={{
                             display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-end',
+                            justifyContent: 'space-between',
                             px: [1],
                         }}
                     >
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-
+                        <Logo/>
                         <Typography
                             variant="h6"
                             noWrap
                             component="a"
                             href="#app-bar-with-responsive-menu"
                             sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
+                                ml: 1,
+                                display: {xs: 'none', md: 'flex'},
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
-                                letterSpacing: '.3rem',
                                 color: 'inherit',
                                 textDecoration: 'none',
                             }}
@@ -100,13 +97,13 @@ export default function Master() {
                             Spotify
                         </Typography>
                         <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
+                            <ChevronLeftIcon/>
                         </IconButton>
                     </Toolbar>
-                    <Divider />
+                    <Divider/>
                     <List component="nav">
                         {mainListItems}
-                        <Divider sx={{ my: 1 }} />
+                        <Divider sx={{my: 1}}/>
 
                     </List>
                 </Drawer>
@@ -121,44 +118,23 @@ export default function Master() {
                         height: '100vh',
                         overflow: 'auto',
                     }}
-                >
-                    <Toolbar />
-                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={3}>
-                            {/* Chart */}
-                            <Grid item xs={12} md={8} lg={9}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-
-                                </Paper>
+                >backgroundColor: 'black',
+                    <Toolbar/>
+                    <Container maxWidth="lg" sx={{mb: 4}}>
+                        <Box container>
+                            <Grid item xs={12} md={12} lg={12} sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between'
+                            }}>
+                                <Typography sx={{fontSize: 'h5.fontSize'}}
+                                >Nghệ sĩ phổ biến</Typography>
+                                <Typography>Hiển thị tất cả</Typography>
                             </Grid>
-                            {/* Recent Deposits */}
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-
-                                </Paper>
-                            </Grid>
-                            {/* Recent Orders */}
-                            <Grid item xs={12}>
-                                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-
-                                </Paper>
-                            </Grid>
+                        </Box>
+                        <Grid container sx={{marginTop: '3px'}} spacing={2} xs={12} md={12} lg={12}>
+                            <Singer/>
                         </Grid>
-                        <Copyright sx={{ pt: 4 }} />
+                        <Copyright sx={{pt: 4}}/>
                     </Container>
                 </Box>
             </Box>

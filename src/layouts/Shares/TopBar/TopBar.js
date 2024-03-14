@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled} from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import {Button} from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -35,6 +34,7 @@ function TopBar({open, toggleDrawer}) {
             <AppBar position="absolute" open={open} >
                 <Toolbar
                     sx={{
+                        backgroundColor: 'black',
                         pr: '24px', // keep right padding when drawer closed
                     }}
                 >
@@ -59,11 +59,28 @@ function TopBar({open, toggleDrawer}) {
                     >
                     
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
+                    <Button
+                        size="large"
+                        sx={{
+                            color : '#dadada',
+                            borderRadius: '20px',
+                            ':hover': {
+                                backgroundColor: 'black',
+                                color: 'white',
+                            }
+                        }}
+                        variant="text">Đăng ký</Button>
+                    <Button
+                        size="large"
+                        sx={{   borderRadius: '20px',
+                                backgroundColor: 'white',
+                                color: "black",
+                                ':hover': {
+                                bgcolor: '#dadada', // theme.palette.primary.main
+                                color: 'black',
+                            },
+                    }}
+                        variant="contained">Đăng nhập</Button>
                 </Toolbar>
             </AppBar>
         </>
