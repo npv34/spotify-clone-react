@@ -67,9 +67,7 @@ export default function Master() {
         <ThemeProvider theme={defaultTheme}>
             <Box sx={{display: 'flex'}}>
                 <CssBaseline/>
-
                 <TopBar open={open} toggleDrawer={toggleDrawer}/>
-
                 <Drawer variant="permanent" open={open}>
                     <Toolbar
                         sx={{
