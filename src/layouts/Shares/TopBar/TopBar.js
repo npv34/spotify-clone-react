@@ -9,6 +9,7 @@ import {Button} from "@mui/material";
 import { Link } from "react-router-dom";
 import {AUTH_ENDPOINT, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE} from "../../../const/SpotifyConst";
 import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 
 const drawerWidth = 240;
 
@@ -32,7 +33,7 @@ const AppBar = styled(MuiAppBar, {
 
 function TopBar({open, toggleDrawer}) {
 
-
+    const auth = useSelector(state => state.auth)
 
     return (
         <>
@@ -64,30 +65,35 @@ function TopBar({open, toggleDrawer}) {
                     >
                     
                     </Typography>
-                    <Button
-                        size="large"
-                        sx={{
-                            color : '#dadada',
-                            borderRadius: '20px',
-                            ':hover': {
-                                backgroundColor: 'black',
-                                color: 'white',
-                            }
-                        }}
-                        variant="text">Đăng ký</Button>
-                    <Link to={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
-                        <Button
-                            size="large"
-                            sx={{   borderRadius: '20px',
-                                backgroundColor: 'white',
-                                color: "black",
-                                ':hover': {
-                                    bgcolor: '#dadada', // theme.palette.primary.main
-                                    color: 'black',
-                                },
-                            }}
-                            variant="contained">Đăng nhập</Button>
-                    </Link>
+                    { !auth.isLogin && (
+                        <>
+                            <Button
+                                size="large"
+                                sx={{
+                                    color : '#dadada',
+                                    borderRadius: '20px',
+                                    ':hover': {
+                                        backgroundColor: 'black',
+                                        color: 'white',
+                                    }
+                                }}
+                                variant="text">Đăng ký</Button>
+                            <Link to={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
+                                <Button
+                                    size="large"
+                                    sx={{   borderRadius: '20px',
+                                        backgroundColor: 'white',
+                                        color: "black",
+                                        ':hover': {
+                                            bgcolor: '#dadada', // theme.palette.primary.main
+                                            color: 'black',
+                                        },
+                                    }}
+                                    variant="contained">Đăng nhập</Button>
+                            </Link>
+                        </>
+                    )}
+
                 </Toolbar>
             </AppBar>
         </>
