@@ -6,6 +6,9 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {Button} from "@mui/material";
+import { Link } from "react-router-dom";
+import {AUTH_ENDPOINT, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE} from "../../../Const/SpotifyConst";
+import {useEffect, useState} from "react";
 
 const drawerWidth = 240;
 
@@ -28,6 +31,8 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 function TopBar({open, toggleDrawer}) {
+
+
 
     return (
         <>
@@ -70,17 +75,19 @@ function TopBar({open, toggleDrawer}) {
                             }
                         }}
                         variant="text">Đăng ký</Button>
-                    <Button
-                        size="large"
-                        sx={{   borderRadius: '20px',
+                    <Link to={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
+                        <Button
+                            size="large"
+                            sx={{   borderRadius: '20px',
                                 backgroundColor: 'white',
                                 color: "black",
                                 ':hover': {
-                                bgcolor: '#dadada', // theme.palette.primary.main
-                                color: 'black',
-                            },
-                    }}
-                        variant="contained">Đăng nhập</Button>
+                                    bgcolor: '#dadada', // theme.palette.primary.main
+                                    color: 'black',
+                                },
+                            }}
+                            variant="contained">Đăng nhập</Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </>

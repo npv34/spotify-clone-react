@@ -9,13 +9,12 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {mainListItems} from '../Shares/Menu/Menu';
 import Copyright from '../Shares/Copyright/Copyright';
 import TopBar from '../Shares/TopBar/TopBar';
 import {Logo} from "../Shares/Logo/Logo";
-import {Singer} from "../../components/Singer/Singer";
+import {Outlet} from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -118,22 +117,10 @@ export default function Master() {
                         height: '100vh',
                         overflow: 'auto',
                     }}
-                >backgroundColor: 'black',
+                >
                     <Toolbar/>
                     <Container maxWidth="lg" sx={{mb: 4}}>
-                        <Box container>
-                            <Grid item xs={12} md={12} lg={12} sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                            }}>
-                                <Typography sx={{fontSize: 'h5.fontSize'}}
-                                >Nghệ sĩ phổ biến</Typography>
-                                <Typography>Hiển thị tất cả</Typography>
-                            </Grid>
-                        </Box>
-                        <Grid container sx={{marginTop: '3px'}} spacing={2} xs={12} md={12} lg={12}>
-                            <Singer/>
-                        </Grid>
+                        <Outlet/>
                         <Copyright sx={{pt: 4}}/>
                     </Container>
                 </Box>
