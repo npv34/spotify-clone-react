@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {Button} from "@mui/material";
 import { Link } from "react-router-dom";
-import {AUTH_ENDPOINT, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE} from "../../../Const/SpotifyConst";
+import {AUTH_ENDPOINT, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE} from "../../../const/SpotifyConst";
 import {useEffect, useState} from "react";
 
 const drawerWidth = 240;
