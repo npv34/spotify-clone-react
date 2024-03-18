@@ -65,7 +65,7 @@ function TopBar({open, toggleDrawer}) {
                     >
                     
                     </Typography>
-                    { !auth.isLogin && (
+                    { !auth.isLogin ? (
                         <>
                             <Button
                                 size="large"
@@ -92,6 +92,18 @@ function TopBar({open, toggleDrawer}) {
                                     variant="contained">Đăng nhập</Button>
                             </Link>
                         </>
+                    ) : (
+                        <Button
+                            size="large"
+                            sx={{   borderRadius: '20px',
+                                backgroundColor: 'white',
+                                color: "black",
+                                ':hover': {
+                                    bgcolor: '#dadada', // theme.palette.primary.main
+                                    color: 'black',
+                                },
+                            }}
+                            variant="contained">Logout</Button>
                     )}
 
                 </Toolbar>

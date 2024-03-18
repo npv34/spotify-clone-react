@@ -16,7 +16,7 @@ function App() {
       window.location.hash = ""
       window.localStorage.setItem("token", token)
     }
-    setToken(token);
+
     AuthService.getUserProfile().then(res => {
       // xu ly login thanh cong
       dispatch(setUserLogin({
