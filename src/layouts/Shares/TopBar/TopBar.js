@@ -9,7 +9,8 @@ import {Button} from "@mui/material";
 import { Link } from "react-router-dom";
 import {AUTH_ENDPOINT, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE} from "../../../const/SpotifyConst";
 import {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import { logoutSystem } from '../../../redux/features/auth';
 
 const drawerWidth = 240;
 
@@ -33,7 +34,13 @@ const AppBar = styled(MuiAppBar, {
 
 function TopBar({open, toggleDrawer}) {
 
-    const auth = useSelector(state => state.auth)
+    const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+
+    const handeLogout = () => {
+        localStorage.removeItem('token');
+        dispatch(logoutSystem())
+    }
 
     return (
         <>
@@ -93,7 +100,7 @@ function TopBar({open, toggleDrawer}) {
                             </Link>
                         </>
                     ) : (
-                        <Button
+                        <Button onClick={handeLogout}
                             size="large"
                             sx={{   borderRadius: '20px',
                                 backgroundColor: 'white',

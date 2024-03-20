@@ -7,7 +7,8 @@ class SpotifyService {
      }
 
     static async search(key, type, limit) {
-         return await axios.get(API_URL + `/search?q=${key}&type=${type}&limit=${limit}`)
+        console.log(`/search?q=${key}&type=${type}&limit=${limit}`);
+         return await axios.get(`/search?q=${key}&type=${type}&limit=${limit}`)
      }
 }
 

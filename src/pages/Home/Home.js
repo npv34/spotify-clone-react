@@ -7,16 +7,16 @@ import {useEffect, useState} from "react";
 import SpotifyService from "../../service/spotify.service";
 
 function Home() {
-    const [artists, setArtists] = useState([]);
+    const [singers, setSinger] = useState([]);
+
     useEffect(() => {
         SpotifyService.getTopArtist(10).then((res) => {
-
-            setArtists(res.data.artists.items);
-        }).catch(err => {
-        
-            setArtists([])
+            console.log(res)
+            setSinger(res.data.artists.items);
+        }).catch((err) => {
+            console.log(err);
         })
-    console.log(artists)
+        console.log(singers);
     }, []);
     return (
         <>
@@ -32,8 +32,11 @@ function Home() {
                 </Grid>
             </Box>
             <Grid container sx={{marginTop: '3px'}} spacing={2} xs={12} md={12} lg={12}>
-                {artists.length > 0 && artists.map(item => (
+                {singers.length > 0 && singers.map(item => (
+                    <>
                     <Singer item={item}/>
+                    </>
+                    
                 ))}
 
             </Grid>
